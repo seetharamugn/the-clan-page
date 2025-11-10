@@ -17,27 +17,27 @@ const Header = () => {
           </div>
           
           {/* Center Navigation */}
-          <nav className="hidden lg:flex items-center gap-8 xl:gap-10">
-            <a href="#about" className="font-sans text-sm text-primary-foreground hover:text-luxury-gold transition-colors tracking-wide">
-              About
+          <nav className="hidden lg:flex items-center gap-6 xl:gap-7">
+            <a href="#about" className="font-sans text-[11px] text-primary-foreground hover:text-luxury-gold transition-colors tracking-wider uppercase">
+              ABOUT
             </a>
-            <a href="#amenities" className="font-sans text-sm text-primary-foreground hover:text-luxury-gold transition-colors tracking-wide">
-              Amenities
+            <a href="#amenities" className="font-sans text-[11px] text-primary-foreground hover:text-luxury-gold transition-colors tracking-wider uppercase">
+              AMENITIES
             </a>
-            <a href="#unit-plans" className="font-sans text-sm text-primary-foreground hover:text-luxury-gold transition-colors tracking-wide">
-              Unit Plans
+            <a href="#unit-plans" className="font-sans text-[11px] text-primary-foreground hover:text-luxury-gold transition-colors tracking-wider uppercase">
+              UNIT PLANS
             </a>
-            <a href="#gallery" className="font-sans text-sm text-primary-foreground hover:text-luxury-gold transition-colors tracking-wide">
-              Gallery
+            <a href="#gallery" className="font-sans text-[11px] text-primary-foreground hover:text-luxury-gold transition-colors tracking-wider uppercase">
+              GALLERY
             </a>
-            <a href="#project-status" className="font-sans text-sm text-primary-foreground hover:text-luxury-gold transition-colors tracking-wide">
-              Project Status
+            <a href="#project-status" className="font-sans text-[11px] text-primary-foreground hover:text-luxury-gold transition-colors tracking-wider uppercase">
+              PROJECT STATUS
             </a>
-            <a href="#location" className="font-sans text-sm text-primary-foreground hover:text-luxury-gold transition-colors tracking-wide">
-              Location
+            <a href="#location" className="font-sans text-[11px] text-primary-foreground hover:text-luxury-gold transition-colors tracking-wider uppercase">
+              LOCATION
             </a>
-            <a href="#contact" className="font-sans text-sm text-primary-foreground hover:text-luxury-gold transition-colors tracking-wide">
-              Contact Us
+            <a href="#contact" className="font-sans text-[11px] text-primary-foreground hover:text-luxury-gold transition-colors tracking-wider uppercase">
+              CONTACT US
             </a>
           </nav>
           
