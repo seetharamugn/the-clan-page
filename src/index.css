@@ -39,10 +39,10 @@ All colors MUST be HSL.
     --radius: 0.5rem;
     
     /* Luxury theme colors */
-    --luxury-green: 160 70% 15%;
-    --luxury-green-dark: 160 70% 10%;
+    --luxury-green: 160 60% 12%;
+    --luxury-green-dark: 160 70% 8%;
     --luxury-cream: 45 60% 88%;
-    --luxury-gold: 45 80% 55%;
+    --luxury-gold: 42 55% 65%;
     
     /* Gradients */
     --gradient-gold: linear-gradient(135deg, hsl(45 80% 55%), hsl(45 70% 65%));
@@ -123,5 +123,31 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+  
+  /* Hide scrollbar */
+  html {
+    overflow: auto;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+  
+  html::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+}
+
+@layer utilities {
+  .clamp-4 {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .clamp-5 {
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 }

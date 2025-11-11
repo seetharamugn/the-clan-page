@@ -4,6 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import creamBg from "@/assets/Cream BG.png";
 
 const faqs = [
   {
@@ -26,22 +27,30 @@ const faqs = [
 
 const FAQ = () => {
   return (
-    <section className="py-20 px-4 md:px-8">
-      <div className="container mx-auto max-w-4xl">
-        <div className="text-center mb-16">
-          <h2 className="font-serif text-4xl font-bold mb-4 text-foreground md:text-5xl">
+    <section
+      className="py-24 px-4 md:px-8"
+      style={{
+        backgroundImage: `url(${creamBg})`,
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+      }}
+    >
+      <div className="mx-auto w-full max-w-[1600px]">
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="font-serif text-luxury-green text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold whitespace-nowrap">
             YOUR QUESTIONS, <span className="text-luxury-gold">ELEGANTLY ANSWERED</span>
           </h2>
         </div>
-        
-        <Accordion type="single" collapsible className="space-y-4">
+
+        <Accordion type="single" collapsible className="space-y-3">
           {faqs.map((faq, index) => (
-            <AccordionItem 
-              key={index} 
+            <AccordionItem
+              key={index}
               value={`item-${index}`}
-              className="border border-border bg-card px-6 rounded-none"
+              className="border border-border/40 bg-transparent px-4 md:px-6 rounded-none"
             >
-              <AccordionTrigger className="font-serif text-lg text-left hover:text-luxury-green">
+              <AccordionTrigger className="font-serif text-base md:text-lg text-left hover:text-luxury-green">
                 {faq.question}
               </AccordionTrigger>
               <AccordionContent className="font-sans text-muted-foreground">

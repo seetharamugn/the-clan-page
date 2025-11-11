@@ -1,9 +1,18 @@
 import buildingImage from "@/assets/building-exterior.jpg";
+import creamBg from "@/assets/Cream BG.png";
 
 const Lifestyle = () => {
   return (
-    <section className="py-20 px-4 md:px-8">
-      <div className="container mx-auto">
+    <section
+      className="py-24"
+      style={{
+        backgroundImage: `url(${creamBg})`,
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+      }}
+    >
+      <div className="mx-auto w-full max-w-[1600px] px-4 md:px-8">
         <div className="grid gap-12 lg:grid-cols-2 items-center">
           <div className="space-y-6">
             <h2 className="font-serif text-4xl font-bold text-foreground md:text-5xl">

@@ -10,12 +10,18 @@ import VirtualTour from "@/components/sections/VirtualTour";
 import Lifestyle from "@/components/sections/Lifestyle";
 import Calculator from "@/components/sections/Calculator";
 import Contact from "@/components/sections/Contact";
+import EnquireNow from "@/components/EnquireNow";
+import Segments from "@/components/sections/Segments";
+import FooterBar from "@/components/sections/FooterBar";
+
 
 const Index = () => {
   return (
     <div className="min-h-screen">
       <Header />
-      <Hero />
+      <EnquireNow />
+      <main className="pt-20">
+        <Hero />
       <LuxuryIntro />
       <Features />
       <FloorPlans />
@@ -24,14 +30,12 @@ const Index = () => {
       <FAQ />
       <VirtualTour />
       <Lifestyle />
+      <Segments />
       <Calculator />
       <Contact />
+      </main>
       
-      <footer className="bg-luxury-green-dark text-primary-foreground py-8 text-center">
-        <p className="font-sans text-sm">
-          © 2024 The Clan. All rights reserved. | A Legacy of Luxury Living
-        </p>
-      </footer>
+      <FooterBar />
     </div>
   );
 };

@@ -1,92 +1,152 @@
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+
+const formatINR = (value: number, fraction = 2) =>
+  value.toLocaleString("en-IN", {
+    minimumFractionDigits: fraction,
+    maximumFractionDigits: fraction,
+  });
 
 const Calculator = () => {
-  const [loanAmount, setLoanAmount] = useState("5000000");
-  const [interestRate, setInterestRate] = useState("8.5");
-  const [tenure, setTenure] = useState("20");
-  
-  const calculateEMI = () => {
-    const principal = parseFloat(loanAmount);
-    const rate = parseFloat(interestRate) / 12 / 100;
-    const time = parseFloat(tenure) * 12;
-    
-    const emi = (principal * rate * Math.pow(1 + rate, time)) / (Math.pow(1 + rate, time) - 1);
-    return emi.toFixed(0);
-  };
+  // Defaults mimicking the reference design
+  const [loanAmount, setLoanAmount] = useState<number>(2000000); // 20L to 1.8Cr scale
+  const [interestRate, setInterestRate] = useState<number>(2); // 2% to 20%
+  const [tenure, setTenure] = useState<number>(2); // years 0-20
+
+  const monthlyRate = interestRate / 12 / 100;
+  const months = tenure * 12;
+  const emi =
+    months > 0 && monthlyRate > 0
+      ? (loanAmount * monthlyRate * Math.pow(1 + monthlyRate, months)) /
+        (Math.pow(1 + monthlyRate, months) - 1)
+      : months > 0
+      ? loanAmount / months
+      : 0;
+  const totalPayable = emi * months;
 
   return (
-    <section className="py-20 bg-gradient-to-r from-luxury-gold to-accent">
-      <div className="container mx-auto px-4 md:px-8">
-        <div className="grid gap-12 lg:grid-cols-2 items-center">
-          <div>
-            <h2 className="font-serif text-4xl font-bold mb-4 text-luxury-green-dark md:text-5xl">
-              CALCULATE YOUR <span className="text-luxury-green">EMI</span>
-            </h2>
-            <p className="font-sans text-lg text-luxury-green-dark/80">
-              Plan your investment with our easy-to-use EMI calculator
-            </p>
-          </div>
-          
-          <div className="bg-card p-8 shadow-xl">
-            <div className="space-y-6">
-              <div>
-                <Label htmlFor="loan-amount" className="font-sans text-sm mb-2 block">
-                  Loan Amount (₹)
-                </Label>
-                <Input
-                  id="loan-amount"
-                  type="number"
-                  value={loanAmount}
-                  onChange={(e) => setLoanAmount(e.target.value)}
-                  className="border-luxury-green/30 focus:border-luxury-green"
-                />
-              </div>
-              
-              <div>
-                <Label htmlFor="interest-rate" className="font-sans text-sm mb-2 block">
-                  Interest Rate (% per annum)
-                </Label>
-                <Input
-                  id="interest-rate"
-                  type="number"
-                  step="0.1"
-                  value={interestRate}
-                  onChange={(e) => setInterestRate(e.target.value)}
-                  className="border-luxury-green/30 focus:border-luxury-green"
-                />
-              </div>
-              
-              <div>
-                <Label htmlFor="tenure" className="font-sans text-sm mb-2 block">
-                  Tenure (Years)
-                </Label>
-                <Input
-                  id="tenure"
-                  type="number"
-                  value={tenure}
-                  onChange={(e) => setTenure(e.target.value)}
-                  className="border-luxury-green/30 focus:border-luxury-green"
-                />
-              </div>
-              
-              <div className="pt-4 border-t border-border">
-                <div className="flex justify-between items-center mb-4">
-                  <span className="font-sans text-sm text-muted-foreground">Monthly EMI</span>
-                  <span className="font-serif text-3xl font-bold text-luxury-green">
-                    ₹{calculateEMI()}
+    <section className="py-24 px-4 md:px-8 bg-white">
+      <div className="mx-auto w-full max-w-[1600px]">
+        <h2 className="font-serif text-4xl md:text-5xl font-bold mb-10 text-luxury-green-dark">
+          CALCULATE <span className="text-luxury-green">YOUR EMI</span>
+        </h2>
+
+        <div className="grid lg:grid-cols-2 gap-10 items-start">
+          {/* LEFT - sliders */}
+          <div className="space-y-10">
+            {/* Loan Amount */}
+            <div>
+              <div className="flex items-center justify-between mb-2">
+                <p className="font-sans text-sm text-muted-foreground">Loan Amount :</p>
+                <div className="flex items-center">
+                  <input
+                    type="text"
+                    value={formatINR(loanAmount, 0)}
+                    readOnly
+                    className="w-40 text-right font-serif text-lg bg-white border border-border px-3 py-1"
+                  />
+                  <span className="inline-flex items-center justify-center bg-luxury-green text-white px-3 py-1">
+                    ₹
                   </span>
                 </div>
-                <Button className="w-full bg-luxury-green hover:bg-luxury-green-dark text-primary-foreground">
-                  Get Payment Schedule
-                </Button>
               </div>
+              <input
+                type="range"
+                className="w-full accent-luxury-green"
+                min={2000000}
+                max={18000000}
+                step={100000}
+                value={loanAmount}
+                onChange={(e) => setLoanAmount(parseInt(e.target.value))}
+              />
+            </div>
+
+            {/* Interest */}
+            <div>
+              <div className="flex items-center justify-between mb-2">
+                <p className="font-sans text-sm text-muted-foreground">Rate Of Interest :</p>
+                <div className="flex items-center">
+                  <input
+                    type="number"
+                    value={interestRate}
+                    onChange={(e) => setInterestRate(parseFloat(e.target.value || "0"))}
+                    className="w-24 text-right font-serif text-lg bg-white border border-border px-3 py-1"
+                  />
+                  <span className="inline-flex items-center justify-center bg-luxury-green text-white px-3 py-1">
+                    %
+                  </span>
+                </div>
+              </div>
+              <input
+                type="range"
+                className="w-full accent-luxury-green"
+                min={2}
+                max={20}
+                step={0.5}
+                value={interestRate}
+                onChange={(e) => setInterestRate(parseFloat(e.target.value))}
+              />
+            </div>
+
+            {/* Tenure */}
+            <div>
+              <div className="flex items-center justify-between mb-2">
+                <p className="font-sans text-sm text-muted-foreground">Tenure :</p>
+                <div className="flex items-center">
+                  <input
+                    type="number"
+                    value={tenure}
+                    onChange={(e) => setTenure(parseFloat(e.target.value || "0"))}
+                    className="w-24 text-right font-serif text-lg bg-white border border-border px-3 py-1"
+                  />
+                  <span className="inline-flex items-center justify-center bg-luxury-green text-white px-3 py-1">
+                    Y
+                  </span>
+                </div>
+              </div>
+              <input
+                type="range"
+                className="w-full accent-luxury-green"
+                min={0}
+                max={20}
+                step={1}
+                value={tenure}
+                onChange={(e) => setTenure(parseInt(e.target.value))}
+              />
             </div>
           </div>
-        </div>
-      </div>
+
+          {/* RIGHT - result card (gold, aligned similar to reference) */}
+          <div className="w-full justify-self-end overflow-hidden shadow bg-[#d6b35d] text-white p-8 md:p-10 rounded-md">
+            <div className="grid sm:grid-cols-1 gap-8 items-center justify-center">
+              <div>
+                <p className="font-sans text-sm md:text-base">Total amount</p>
+                <p className="font-serif text-3xl md:text-4xl mt-1">
+                  ₹{formatINR(totalPayable)}
+                </p>
+              </div>
+              </div>  
+              <div className="grid sm:grid-cols-2 gap-8 item-start">
+              <div>
+                <p className="font-sans text-sm md:text-base">Term:</p>
+                <p className="font-serif text-lg md:text-xl mt-1">{tenure} years</p>
+              </div>
+              <div className="sm:text-right md:text-center">
+                <p className="font-sans text-sm md:text-base">Your EMI:</p>
+                <p className="font-serif text-lg md:text-xl mt-1">₹{formatINR(emi)} per month</p>
+              </div>
+              <div>
+                <p className="font-sans text-sm md:text-base">At Interest Rate of:</p>
+                <p className="font-serif text-lg md:text-xl mt-1">{interestRate}%</p>
+              </div>
+              <div className="sm:text-right md:text-center">
+                <p className="font-sans text-sm md:text-base">Loan Amount:</p>
+                <p className="font-serif text-lg md:text-xl mt-1">₹{formatINR(loanAmount, 0)}</p>
+              </div>
+              </div>
+              </div>
+            </div>
+            </div>
+    
     </section>
   );
 };
