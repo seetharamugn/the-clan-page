@@ -1,10 +1,10 @@
-import interiorImage from "@/assets/Lifestyle.png";
+import interiorImage from "@/assets/Lifestyle.jpg";
 import creamBg from "@/assets/Cream BG.png";
 
 const LuxuryIntro = () => {
   return (
     <section
-      className="py-16 px-4 md:px-6  lg:px-8"
+      className="py-16 px-4 md:px-6  lg:px-8 overflow-hidden"
       style={{
         backgroundImage: `url(${creamBg})`,
         backgroundSize: "cover",
@@ -16,10 +16,10 @@ const LuxuryIntro = () => {
         <div className="grid gap-8 xl:gap-16 lg:grid-cols-2 items-center">
           {/* Image Panels on LEFT */}
           <div className="relative order-2 lg:order-1">
-            <div className="flex gap-6 justify-start items-end">
+            <div className="flex gap-4 md:gap-6 justify-center items-end">
               {/* Left Panel (left third of the single image) */}
               <div
-                className="w-1/3 h-[400px] rounded-md shadow-[0_14px_28px_rgba(0,0,0,0.16),0_10px_10px_rgba(0,0,0,0.12)] overflow-hidden"
+                className="w-1/3 h-[180px] md:h-[400px] rounded-md shadow-[0_14px_28px_rgba(0,0,0,0.16),0_10px_10px_rgba(0,0,0,0.12)] overflow-hidden"
                 style={{
                   backgroundImage: `url(${interiorImage})`,
                   backgroundRepeat: 'no-repeat',
@@ -28,9 +28,9 @@ const LuxuryIntro = () => {
                 }}
               />
 
-              {/* Center Panel (center third of the single image) */}
+              {/* Center Panel (center third of the single image) - Slightly Taller */}
               <div
-                className="w-1/3 h-[420px] -translate-y-12 md:-translate-y-12 rounded-md shadow-[0_16px_30px_rgba(0,0,0,0.18),0_16px_16px_rgba(0,0,0,0.14)] overflow-hidden"
+                className="w-1/3 h-[200px] -translate-y-4 md:h-[420px] md:-translate-y-12 rounded-md shadow-[0_16px_30px_rgba(0,0,0,0.18),0_16px_16px_rgba(0,0,0,0.14)] overflow-hidden"
                 style={{
                   backgroundImage: `url(${interiorImage})`,
                   backgroundRepeat: 'no-repeat',
@@ -41,7 +41,7 @@ const LuxuryIntro = () => {
 
               {/* Right Panel (right third of the single image) */}
               <div
-                className="w-1/3 h-[400px] rounded-md shadow-[0_14px_28px_rgba(0,0,0,0.16),0_10px_10px_rgba(0,0,0,0.12)] overflow-hidden"
+                className="w-1/3 h-[180px] md:h-[400px] rounded-md shadow-[0_14px_28px_rgba(0,0,0,0.16),0_10px_10px_rgba(0,0,0,0.12)] overflow-hidden"
                 style={{
                   backgroundImage: `url(${interiorImage})`,
                   backgroundRepeat: 'no-repeat',
@@ -55,13 +55,18 @@ const LuxuryIntro = () => {
           {/* Text on RIGHT */}
           <div className="space-y-5 animate-fade-in order-1 lg:order-2 lg:pl-0">
             <h2 className="font-serif text-4xl md:text-4xl lg:text-5xl font-normal text-luxury-green-dark leading-tight">
-              ROOTED IN <span className="text-[#5a7c5e]">LUXURY</span>,
-              BRANCHING INTO
-              <span className="text-[#5a7c5e]">THE FUTURE</span>
+            THE CLAN - <span className="text-[#5a7c5e]">HERE</span>,
+            COMMUNITY IS THE <span className="text-[#5a7c5e]">NEW LUXURY</span>
             </h2>
             <div className="h-1 w-16 bg-luxury-gold" />
             <p className="font-sans text-base md:text-base text-luxury-green-dark leading-relaxed">
-              At LivingTree, we're designing more than just living spaces we're crafting the canvas for your life's most cherished memories. Nestled within a lush, 25-acre community, our residential property in Bangalore combines the best of nature and luxury, just 15 minutes from Bangalore International Airport. With ten 24-floored towers and over 60 amenities specially curated for four generations, we create a home that is a reflection of your dreams a place where you can truly belong.
+            The Clan is a living ode to connection, design, and belonging, It’s where
+mindful design meets meaningful living and community becomes the most beautiful form of
+luxury. It welcomes families, like- minded individuals and dreamers into a serene,
+nature-wrapped sanctuary far from the city’s restless hum. Discover our 2 & 3 Bed Signature
+Residences, where light, space, and comfort converge. Here every brick holds intention while
+every curve whispers community.
+
             </p>
           </div>
         </div>

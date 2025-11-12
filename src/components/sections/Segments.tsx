@@ -4,7 +4,7 @@ import hallway from "@/assets/interior-hallway.jpg";
 import building from "@/assets/building-exterior.jpg";
 import interior from "@/assets/interior.jpg";
 import exterior from "@/assets/exterior.jpeg";
-import amenities from "@/assets/amenities.jpg";
+import amenities from "@/assets/amenities.jpeg";
 
 type SegmentItem = {
   title: string;
@@ -33,7 +33,7 @@ const Segments = () => {
   };
 
   return (
-    <section className="py-16 px-4 md:px-8">
+    <section className="py-8 md:py-16 px-4 md:px-8 overflow-hidden">
       <div className="mx-auto w-full max-w-[1600px] relative">
         {/* Arrows */}
         <button
@@ -62,7 +62,7 @@ const Segments = () => {
         `}</style>
         <div
           ref={scroller}
-          className="segments-scroller flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2"
+          className="segments-scroller flex gap-4 md:gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2"
         >
           {items.map((it, i) => (
             <div
@@ -72,11 +72,11 @@ const Segments = () => {
               <img
                 src={it.image}
                 alt={it.title}
-                className="w-full h-[420px] object-cover rounded-md"
+                className="w-full h-[300px] sm:h-[360px] md:h-[420px] object-cover rounded-md"
               />
               <div className="absolute inset-0 rounded-md bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-              <div className="absolute bottom-5 left-6 right-6">
-                <p className="font-serif text-white text-xl md:text-2xl drop-shadow">
+              <div className="absolute bottom-4 md:bottom-5 left-4 md:left-6 right-4 md:right-6">
+                <p className="font-serif text-white text-lg sm:text-xl md:text-2xl drop-shadow">
                   {it.title}
                 </p>
               </div>

@@ -17,10 +17,10 @@ import FooterBar from "@/components/sections/FooterBar";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-x-hidden w-full max-w-[100vw]">
       <Header />
       <EnquireNow />
-      <main className="pt-20">
+      <main className="pt-20 overflow-x-hidden w-full">
         <Hero />
       <LuxuryIntro />
       <Features />

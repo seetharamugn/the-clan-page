@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import banner1 from "@/banners/Banner 1.png";
-import banner2 from "@/banners/Banner 2.png";
-import banner3 from "@/banners/Banner 3.png";
-import banner4 from "@/banners/Banner 4.png";
+import banner1 from "@/banners/Banner-1.jpg";
+import banner2 from "@/banners/Banner-2.jpg";
+import banner3 from "@/banners/Banner-3.jpg";
+import banner4 from "@/banners/Banner-4.jpg";
 
 const Hero = () => {
   const banners = [banner1, banner2, banner3, banner4];

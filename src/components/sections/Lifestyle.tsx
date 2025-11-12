@@ -4,7 +4,7 @@ import creamBg from "@/assets/Cream BG.png";
 const Lifestyle = () => {
   return (
     <section
-      className="py-24"
+      className="py-12 md:py-24 overflow-hidden"
       style={{
         backgroundImage: `url(${creamBg})`,
         backgroundSize: "cover",
@@ -13,18 +13,22 @@ const Lifestyle = () => {
       }}
     >
       <div className="mx-auto w-full max-w-[1600px] px-4 md:px-8">
-        <div className="grid gap-12 lg:grid-cols-2 items-center">
+        <div className="grid gap-8 md:gap-12 lg:grid-cols-2 items-center">
           <div className="space-y-6">
-            <h2 className="font-serif text-4xl font-bold text-foreground md:text-5xl">
-              ENHANCING <span className="text-luxury-gold">LIFESTYLES</span>.<br />
-              TRANSFORMING <span className="text-luxury-green">SKYLINES</span>.
+            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-foreground md:text-5xl text-center lg:text-left">
+            EXCELLENTLY <span className="text-luxury-gold">BUILT</span>.<br />
+            EXCLUSIVELY <span className="text-luxury-green">DELIVERED</span>.
             </h2>
-            <div className="h-1 w-24 bg-luxury-gold" />
-            <p className="font-sans text-lg text-muted-foreground leading-relaxed">
-              Our commitment extends beyond creating homes; we craft landmarks that define the cityscape. Each residence is designed to elevate your lifestyle while contributing to the architectural heritage of the city.
+            <div className="h-1 w-24 bg-luxury-gold mx-auto lg:mx-0" />
+            <p className="font-sans text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed text-center lg:text-left">
+            In the vibrant metropolis of Bengaluru, where the urban landscape is constantly being
+          reimagined, Global Edifice has spent the last decade in making more than just buildings.
+
             </p>
-            <p className="font-sans text-lg text-muted-foreground leading-relaxed">
-              With attention to every detail, from the grand facade to intimate living spaces, we create environments that inspire and endure for generations.
+            <p className="font-sans text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed text-center lg:text-left">
+            We’ve been conducting a symphony of Progress, orchestring the very fabric of modern living.
+            Our work goes beyond concrete and steel. It's about composing an elevated lifestyle,
+            harmonizing grand aspirations with comfort, luxury, style for the city’s residents.
             </p>
           </div>
           
@@ -32,7 +36,7 @@ const Lifestyle = () => {
             <img 
               src={buildingImage} 
               alt="Building Skyline" 
-              className="w-full h-[500px] object-cover shadow-xl"
+              className="w-full h-[300px] sm:h-[400px] md:h-[500px] object-cover shadow-xl rounded-md"
             />
           </div>
         </div>
